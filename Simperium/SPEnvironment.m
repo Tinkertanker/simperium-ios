@@ -35,6 +35,9 @@ NSString* const SPLibraryVersion                = @"0.8.2";
 // SSL Certificate Expiration: '2016-09-07 02:36:04 +0000' expressed as seconds since 1970
 NSTimeInterval const SPCertificateExpiration    = 1473215764;
 
+
+
+
 // Note:
 // The PEM certificate can be obtained by means of openssl cli:
 //      > openssl s_client -showcerts -host api.simperium.com -port 443
@@ -67,3 +70,45 @@ NSString* const SPCertificatePayload            = @"MIIFKTCCBBGgAwIBAgIHJ/SM4X23
                                                     @"3TFo3Yyr+a8jdjgfEbhdFl+TsSXdLhFgSPla9iWXGLM62xV9wvL6kYEjORO5EaQs"
                                                     @"InaPsgGNnQlmjma1aTseqNvyFTqnGydI9nFvcrbA0zDAMHwojL8ucShEfZZuE4cw"
                                                     @"1VSes+bqjqfqLlWitfhe1Q6loHgn6AeKG68JC0Y=";
+
+
+@implementation SPEnvironment
+- (instancetype)init {
+    self = [super init];
+    return self;
+}
+-(NSString *) getWebsocketURL {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults boolForKey:@"SPUsingCustomEndpoints"]){
+        NSLog(@"Using custom entry %@",[userDefaults stringForKey:@"SPWebsocketURLPreference"]);
+        return [userDefaults stringForKey:@"SPWebsocketURLPreference"];
+    }
+    else{
+        NSLog(@"Using default entry %@",SPWebsocketURL);
+        return SPWebsocketURL;
+    }
+}
+-(NSString *) getBaseURL{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults boolForKey:@"SPUsingCustomEndpoints"]){
+        NSLog(@"Using custom entry %@",[userDefaults stringForKey:@"SPBaseURLPreference"]);
+        return [userDefaults stringForKey:@"SPBaseURLPreference"];
+    }
+    else{
+        NSLog(@"Using default entry %@",SPBaseURL);
+        return SPBaseURL;
+    }
+}
+-(NSString *) getAuthURL{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults boolForKey:@"SPUsingCustomEndpoints"]){
+        NSLog(@"Using custom entry %@",[userDefaults stringForKey:@"SPAuthURLPreference"]);
+        return [userDefaults stringForKey:@"SPAuthURLPreference"];
+    }
+    else{
+        NSLog(@"Using default entry %@",SPAuthURL);
+        return SPAuthURL;
+    }
+}
+
+@end

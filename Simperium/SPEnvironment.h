@@ -25,3 +25,9 @@ extern NSString* const SPLibraryVersion;
 
 extern NSTimeInterval const SPCertificateExpiration;
 extern NSString* const SPCertificatePayload;
+
+@interface SPEnvironment : NSObject
+-(NSString *) getWebsocketURL;
+-(NSString *) getBaseURL;
+-(NSString *) getAuthURL;
+@end

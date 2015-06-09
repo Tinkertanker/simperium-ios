@@ -407,7 +407,7 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     // Keep the keys!
     self.appID      = identifier;
     self.APIKey     = key;
-    self.rootURL    = SPBaseURL;
+    self.rootURL    = [[[SPEnvironment alloc] init] getBaseURL];
     
     // With everything configured, all objects can now be validated. This will pick up any objects that aren't yet
     // known to Simperium (for the case where you're adding Simperium to an existing app).

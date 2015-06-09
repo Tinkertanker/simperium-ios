@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Simperium"
-  s.version      = "0.8.2"
+  s.version      = "0.8.2-c"
   s.summary      = "Simperium libraries."
   s.description  = "Simperium is a simple way for developers to move data as it changes, instantly and automatically."
   s.homepage     = "https://github.com/Simperium/simperium-ios"
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { "Simperium" => "contact@simperium.com" }
 
   # s.source     = { :git => "https://github.com/Simperium/simperium-ios.git", :tag => "v{s.version}" }
-  s.source       = { :git => "https://github.com/Simperium/simperium-ios.git", :branch => "develop" }
+  s.source       = { :git => "https://github.com/Tinkertanker/simperium-ios.git", :branch => "custom-endpoint" }
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
